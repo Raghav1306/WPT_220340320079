@@ -30,9 +30,13 @@ app.get('/book',(req,res)=>{
 			
         } else {
             if(rows.length>0)
+            console.log( rows);
+        
           output.status=true;
           output.book.bookname=rows[0].bookname;
           output.book.price=rows[0].price;
+          console.log( output.book);
+    
             };
             res.send(output);
     

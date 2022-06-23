@@ -12,33 +12,34 @@
         $("#bookid").blur(()=>{
             let ip={bookid:$("#bookid").val()};
            
-            let para=({
+            let para={
                     data:ip,
                     type: "get",
                     dataType: "json",
                     url: "http://localhost:8081/book",
 
                     success: function (data) {
-							alert("success data");
                             if(data.status==true){
-                                $("#bookname").text(data.bookname);
-                                $("#price").text(data.price);
-                                $("#msg").html("book found");
+                                $("#bookname").val(data.book.bookname);
+                                $("#price").val(data.book.price);
+                                $("#msg").text("book found");
                             }
                             else{
-                                if(data.status==true){
-                                $("#bookname").text();
-                                $("#price").text();
+                               
+                                $("#bookname").val();
+                                $("#price").val();
                                 $("#msg").html("book not found");
-                            }
+                            
                             }
                         
                     },
                     error: function (e) {
                         alert('we have trouble ' + JSON.stringify(e));
                     }
-                });
-				$.ajax(para);
+                    
+                };
+                $.ajax(para);
+			
         });
       
 
